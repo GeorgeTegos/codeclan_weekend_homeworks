@@ -34,7 +34,22 @@ for number in numbers:
 #    BUT ignore any section of numbers starting with a 6 and extending to the next 7.
 #    
 #    So [11, 6, 4, 99, 7, 11] would have sum of 22
+def ignore(list_name):
+    total = 0
+    flag = False       #Create a flag to use as a Start and End point of what we ignore
+    for number in list_name:
+        if number == 6:     
+            flag = True
+        elif number == 7:
+            flag = False
 
+        if flag == False and number != 7:   # Remove number 7 for our total
+            total = total + number
+        # elif flag == True:
+        #     pass
+    return total
+
+print(ignore([11, 6, 4, 99, 7, 11]))
 
 # 5. HARD! Print the sum of the numbers. 
 #    Except the number 13 is very unlucky, so it does not count.
