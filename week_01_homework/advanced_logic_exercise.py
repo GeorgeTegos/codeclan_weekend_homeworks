@@ -58,7 +58,17 @@ print(ignore([11, 6, 4, 99, 7, 11]))
 #
 #    So [5, 13, 2] would have sum of 5. 
 
+def unlucky(list_name):
+    flag = False
+    total = 0
+    for number in list_name:
+        if number == 13:
+            flag = True
+        elif flag != True:
+            total = total + number
+    return total
 
+print(unlucky([5, 13, 2]))
 
 
 
