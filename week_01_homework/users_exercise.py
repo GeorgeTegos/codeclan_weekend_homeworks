@@ -56,13 +56,23 @@ users = {
 
 # 1. Get Jonathan's Twitter handle (i.e. the string `"jonnyt"`)
 print(users["Jonathan"]["twitter"])
+
 # 2. Get Erik's hometown
 print(users["Erik"]["home_town"])
+
 # 3. Get the list of Erik's lottery numbers
 print(users["Erik"]["lottery_numbers"])
+
 # 4. Get the species of Avril's pet Monty
 print(users["Avril"]["pets"][0]["species"])
+
 # 5. Get the smallest of Erik's lottery numbers
+eric_list = users["Erik"]["lottery_numbers"]
+lowest_number = sum(eric_list)
+for number in eric_list:
+    if lowest_number > number:
+        lowest_number = number
+print(lowest_number)
 # 6. Return an list of Avril's lottery numbers that are even
 # 7. Erik is one lottery number short! Add the number `7` to be included in his lottery numbers
 # 8. Change Erik's hometown to Edinburgh
