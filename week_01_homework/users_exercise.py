@@ -73,7 +73,15 @@ for number in eric_list:
     if lowest_number > number:
         lowest_number = number
 print(lowest_number)
+
 # 6. Return an list of Avril's lottery numbers that are even
+avril_list = users["Avril"]["lottery_numbers"]
+new_list = []
+for number in avril_list:
+    if number % 2 == 0:
+        new_list.append(number)
+print(new_list)
+
 # 7. Erik is one lottery number short! Add the number `7` to be included in his lottery numbers
 # 8. Change Erik's hometown to Edinburgh
 # 9. Add a pet dog to Erik called "fluffy"
