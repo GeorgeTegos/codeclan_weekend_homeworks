@@ -67,12 +67,14 @@ print(users["Erik"]["lottery_numbers"])
 print(users["Avril"]["pets"][0]["species"])
 
 # 5. Get the smallest of Erik's lottery numbers
-eric_list = users["Erik"]["lottery_numbers"]
-lowest_number = sum(eric_list)
-for number in eric_list:
-    if lowest_number > number:
-        lowest_number = number
-print(lowest_number)
+
+# eric_list = users["Erik"]["lottery_numbers"]
+# lowest_number = sum(eric_list)
+# for number in eric_list:
+#     if lowest_number > number:
+#         lowest_number = number
+# print(lowest_number)
+print(min(users["Erik"]["lottery_numbers"]))
 
 # 6. Return an list of Avril's lottery numbers that are even
 avril_list = users["Avril"]["lottery_numbers"]
@@ -92,8 +94,7 @@ users["Erik"]["home_town"] = "Edinburgh"
 print(users["Erik"]["home_town"])
 
 # 9. Add a pet dog to Erik called "fluffy"
-users["Erik"]["pets"].append({"name":"fluffy",
-                              "species": "dog"})
+users["Erik"]["pets"].append({"name":"fluffy","species": "dog"})
 print(users["Erik"]["pets"])
 
 # 10. Add another person to the users dictionary
@@ -116,4 +117,4 @@ users["George"] = {
     }
     ] #Pets list Close
 }
-print(users)
+# print(users)
