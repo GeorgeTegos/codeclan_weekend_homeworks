@@ -62,16 +62,24 @@ print(ignore([11, 6, 4, 99, 7, 11]))
 #    So [5, 13, 2] would have sum of 5. 
 
 def unlucky(list_name):
-    flag = False
+    flag = False            #  Use flag to set ignore point at line 74 
     total = 0
-    for number in list_name:
-        if number == 13:
+
+    for num in list_name:
+
+        if flag == True:    #   ignores the next index and returns flag to False
+            flag = False
+            continue
+        
+        if num == 13:       #   ignore number 13 and setup ignore point for the next index
             flag = True
-        elif flag != True:
-            total = total + number
+            continue
+        
+        total = total + num
     return total
 
 print(unlucky([5, 13, 2]))
+# print(unlucky([5, 13, 2, 5, 13, 44]))
 
 
 
