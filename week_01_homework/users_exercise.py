@@ -82,7 +82,11 @@ for number in avril_list:
         new_list.append(number)
 print(new_list)
 
-# 7. Erik is one lottery number short! Add the number `7` to be included in his lottery numbers
+# 7. Erik is one lottery number short! Add the number `7` 
+# to be included in his lottery numbers
+users["Erik"]["lottery_numbers"].append(7)
+print(users["Erik"]["lottery_numbers"])
+
 # 8. Change Erik's hometown to Edinburgh
 # 9. Add a pet dog to Erik called "fluffy"
 # 10. Add another person to the users dictionary
