@@ -22,12 +22,6 @@ for number in numbers:
 print("The Difference is: ",highest_number-lowest_number)
 
 # 3. Print True if the list contains a 2 next to a 2 somewhere.
-flag = 1
-for number in numbers:
-        #   IF number 2 exist on next index         IF number 2 exist on previous index
-    if (number == 2 and (numbers[flag] == 2)) or (number == 2 and (numbers[flag-2]==2)) :
-        print(True,' \tFor lists index position ',flag-1)
-    flag += 1
 
 
 # 4. Print the sum of the numbers, 
