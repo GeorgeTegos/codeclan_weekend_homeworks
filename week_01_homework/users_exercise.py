@@ -95,4 +95,25 @@ print(users["Erik"]["home_town"])
 users["Erik"]["pets"].append({"name":"fluffy",
                               "species": "dog"})
 print(users["Erik"]["pets"])
+
 # 10. Add another person to the users dictionary
+users["George"] = {
+    "twitter": "george_tegos",
+    "lottery_numbers": [3, 13, 23, 33, 43, 53],
+    "home_town": "Naousa",
+    "pets": [ # Pets List Open
+    {
+      "name": "fluffy",
+      "species": "cat"
+    },
+    {
+      "name": "fido",
+      "species": "dog"
+    },
+    {
+      "name": "spike",
+      "species": "dog"
+    }
+    ] #Pets list Close
+}
+print(users)
