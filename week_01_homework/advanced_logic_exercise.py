@@ -3,10 +3,14 @@
 numbers = [1, 6, 2, 2, 7, 1, 6, 13, 99, 7]
 
 # 1. Print out a list of the even integers:
+new_list = []
+for number in numbers:
+    if number % 2 == 0:
+        new_list.append(number)
+print(new_list)
 
 
 # 2. Print the difference between the largest and smallest value:
-
 
 # 3. Print True if the list contains a 2 next to a 2 somewhere.
 
