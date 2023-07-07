@@ -11,6 +11,15 @@ print(new_list)
 
 
 # 2. Print the difference between the largest and smallest value:
+highest_number = 0
+lowest_number = sum(numbers)
+
+for number in numbers:
+    if number > highest_number:
+        highest_number = number
+    elif number < lowest_number:
+        lowest_number = number
+print("The Difference is: ",highest_number-lowest_number)
 
 # 3. Print True if the list contains a 2 next to a 2 somewhere.
 
