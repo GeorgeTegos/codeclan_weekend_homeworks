@@ -1,0 +1,8 @@
+from models.book import Book
+
+book_one = Book("1984","George Orwell","Dystopian Fiction")
+book_two = Book("Pride and Prejudice","Jane Austen","Romance")
+book_three = Book("The Da Vinci Code","Dan Brown","Mystery")
+book_four = Book("The Handmaid's Tale","Margaret Atwood","Speculative Fiction")
+
+book_list = [book_one,book_two,book_three,book_four]
