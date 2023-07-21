@@ -28,7 +28,7 @@ print("The Difference is: ",highest_number-lowest_number)
 flag = 1
 for number in numbers:
         #   IF number 2 exist on next index         IF number 2 exist on previous index
-    if (number == 2 and (numbers[flag] == 2)) or (number == 2 and (numbers[flag-2]==2)) :
+    if (number == 2 and (numbers[flag] == 2)) or (number == 2 and (numbers[flag-2]==2)):
         print(True,' \tFor lists index position ',flag-1)
     flag += 1
 
@@ -78,7 +78,7 @@ def unlucky(list_name):
         total = total + num
     return total
 
-print(unlucky([5, 13, 2]))
+print(unlucky(numbers))
 # print(unlucky([5, 13, 2, 5, 13, 44]))
 
 
