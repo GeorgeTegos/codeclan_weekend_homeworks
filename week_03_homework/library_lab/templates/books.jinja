@@ -2,18 +2,36 @@
 {% block content %}
     
     {% if book != List  %}
-        <ul>
-            <li>{{ book.title }}</li>
-            <li>{{ book.author }}</li>
-            <li>{{ book.book_genre }}</li>
-        </ul>
+      {% if book_checked_out == False %}
+            <h3>This book is available now !</h3>
+        {% endif %}
+    <ul style="list-style: none;">
+        <li>{{ book.title }}</li>
+        <li>{{ book.author }}</li>
+        <li>{{ book.book_genre }}</li>
+    </ul>
+
+   {% if book_checked_out == False %}
+    <form action="/books/{{book.id}}" method="post">
+        <label for="checked_out">Get this book</label>
+        <input type="submit" value="checked_out" name="checked_out" onclick="return confirm('Are you sure about it?')">
+    </form>
+   {% endif %} 
+   {% if book_checked_out == True %}
+    <form action="/books/{{book.id}}" method="post">
+        <label for="checked_in">Return this book</label>
+        <input type="submit" value="checked_in" name="checked_in" onclick="return confirm('Are you sure about it?')">
+    </form>
+   {% endif %}
+
+
     {% endif %}
     
     <ul> 
         {% for book in book_list  %}
             <li> {{ book.title }} by {{ book.author }} (Genre: {{ book.book_genre }} )
-            <a href="/books/{{loop.index0}}">link</a></li>
-            <a href="/books/{{loop.index0}}/delete">Delete</a>
+            <a href="/books/{{book.id}}">link</a></li>
+            <a href="/books/{{book.id}}/delete">Delete</a>
         {% endfor %}
     </ul>
 
