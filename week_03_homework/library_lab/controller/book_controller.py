@@ -12,39 +12,28 @@ def index():
 # Books
 @book_blueprint.route('/books')
 def list_of_books():
-    return render_template("books.jinja",title="Test",book_list = book_list)
+    return render_template("books.jinja",title="Books List",book_list = book_list)
 
 @book_blueprint.route("/books/<id>")
 def show_specific_book(id):
-        for book in book_list:
-            if book.id == int(id):
-              book_position = book
-        # book_position = book_list[int(index)]
+        book_position = find_book_by_id(id)
         return render_template("books.jinja",title=book_position.title,book=book_position,
                            book_checked_out=book_position.checked_out)
 
 @book_blueprint.route("/books/<id>/delete")
 def delete_book(id):
-    for book in book_list:
-        if book.id == int(id):
-            result = book
-    book_list.remove(result)
+    book = find_book_by_id(id)
+    book_list.remove(book)
     return redirect('/books')
 
 @book_blueprint.route('/books/<id>/check_out', methods=['POST'])
 def check_out_book(id):
-    for book in book_list:
-        if book.id == int(id):
-            result = book
-    result.checked_out = True
+    find_book_by_id(id).checked_out = True
     return redirect('/')
 
 @book_blueprint.route('/books/<id>/check_in', methods=['POST'])
 def check_in_book(id):
-    for book in book_list:
-        if book.id == int(id):
-            result = book
-    result.checked_out = False
+    find_book_by_id(id).checked_out= False
     return redirect('/')
 
 
@@ -81,3 +70,8 @@ def check_unique_id(list_of_books):
         else:
             unique = False
 
+def find_book_by_id(id):
+    for book in book_list:
+        if book.id == int(id):
+            result = book
+    return result

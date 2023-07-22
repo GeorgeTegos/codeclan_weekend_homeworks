@@ -33,8 +33,15 @@
     <ul> 
         {% for book in book_list  %}
             <li> {{ book.title }} by {{ book.author }} (Genre: {{ book.book_genre }} )
-            <a href="/books/{{book.id}}">link</a></li>
+            {% if book.checked_out == False %}
+                <span style="color:green">Available</span>
+             {% endif %}
+            {% if book.checked_out == True %}
+               <span style="color: red;"> Not Available</span>
+             {% endif %}
+            <a href="/books/{{book.id}}">More Info</a></li>
             <a href="/books/{{book.id}}/delete">Delete</a>
+            
         {% endfor %}
     </ul>
 
