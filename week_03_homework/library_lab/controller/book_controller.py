@@ -31,12 +31,20 @@ def delete_book(id):
     book_list.remove(result)
     return redirect('/books')
 
-@book_blueprint.route('/books/<id>', methods=['POST'])
+@book_blueprint.route('/books/<id>/check_out', methods=['POST'])
 def check_out_book(id):
     for book in book_list:
         if book.id == int(id):
             result = book
     result.checked_out = True
+    return redirect('/')
+
+@book_blueprint.route('/books/<id>/check_in', methods=['POST'])
+def check_in_book(id):
+    for book in book_list:
+        if book.id == int(id):
+            result = book
+    result.checked_out = False
     return redirect('/')
 
 

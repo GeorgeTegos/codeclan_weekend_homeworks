@@ -5,6 +5,9 @@
       {% if book_checked_out == False %}
             <h3>This book is available now !</h3>
         {% endif %}
+    {% if book_checked_out == True %}
+            <h3>This book is not available at this moment</h3>
+    {% endif %}
     <ul style="list-style: none;">
         <li>{{ book.title }}</li>
         <li>{{ book.author }}</li>
@@ -12,15 +15,15 @@
     </ul>
 
    {% if book_checked_out == False %}
-    <form action="/books/{{book.id}}" method="post">
-        <label for="checked_out">Get this book</label>
-        <input type="submit" value="checked_out" name="checked_out" onclick="return confirm('Are you sure about it?')">
+    <form action="/books/{{book.id}}/check_out" method="post">
+        <label for="checked_out">Want this book?</label><br>
+        <input type="submit" value="Get it!" name="checked_out" onclick="return confirm('Are you sure about it?')">
     </form>
    {% endif %} 
    {% if book_checked_out == True %}
-    <form action="/books/{{book.id}}" method="post">
-        <label for="checked_in">Return this book</label>
-        <input type="submit" value="checked_in" name="checked_in" onclick="return confirm('Are you sure about it?')">
+    <form action="/books/{{book.id}}/check_in" method="post">
+        <label for="checked_in">Return this book</label><br>
+        <input type="submit" value="Return" name="checked_in" onclick="return confirm('Are you sure about it?')">
     </form>
    {% endif %}
 
