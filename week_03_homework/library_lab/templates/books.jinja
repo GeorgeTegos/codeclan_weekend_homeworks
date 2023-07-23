@@ -1,46 +1,54 @@
 {% extends 'base.jinja' %}
 {% block content %}
-    
+
     {% if book != List  %}
+    <div class="book_details">
       {% if book_checked_out == False %}
             <h3>This book is available now !</h3>
         {% endif %}
     {% if book_checked_out == True %}
             <h3>This book is not available at this moment</h3>
     {% endif %}
-    <ul style="list-style: none;">
-        <li>{{ book.title }}</li>
-        <li>{{ book.author }}</li>
-        <li>{{ book.book_genre }}</li>
-    </ul>
+        <ul class="book_details__ul" style="list-style: none;">
+            <li>Title: <h4> {{ book.title }} </h4></li>
+            <li>Author: <h5> {{ book.author }} </h5> </li>
+            <li>Genre: <h5> {{ book.book_genre }} </h5> </li>
+        </ul>
 
    {% if book_checked_out == False %}
     <form action="/books/{{book.id}}/check_out" method="post">
-        <label for="checked_out">Want this book?</label><br>
-        <input type="submit" value="Get it!" name="checked_out" onclick="return confirm('Are you sure about it?')">
+        <label for="checked_out">Want this book?</label>
+        <input type="submit" value="Get it!" name="checked_out" onclick="return confirm('Confirm book checkout')">
     </form>
    {% endif %} 
    {% if book_checked_out == True %}
     <form action="/books/{{book.id}}/check_in" method="post">
-        <label for="checked_in">Return this book</label><br>
-        <input type="submit" value="Return" name="checked_in" onclick="return confirm('Are you sure about it?')">
+        <label for="checked_in">Return this book</label>
+        <input type="submit" value="Return" name="checked_in" onclick="return confirm('Confrim book checkin')">
     </form>
+    
    {% endif %}
+    
+    
+    <a class="delete" href="/books/{{book.id}}/delete" onclick="return confirm('Confirm Delete of book: {{book.title}}')"
+    style="align-self: center;">Delete</a>
 
-
+    </div>
     {% endif %}
     
-    <ul> 
+    <ul class="books_list"> 
         {% for book in book_list  %}
-            <li> {{ book.title }} by {{ book.author }} (Genre: {{ book.book_genre }} )
+            <li>Title: <h4> {{ book.title }} </h4>
+            Author: <h5> {{ book.author }} </h5>  
+            (Genre:<h5> {{ book.book_genre }} )</h5> 
             {% if book.checked_out == False %}
-                <span style="color:green">Available</span>
+                <span class="available_check" style="color:green">Available</span> 
              {% endif %}
             {% if book.checked_out == True %}
-               <span style="color: red;"> Not Available</span>
+               <span class="available_check" style="color: red;"> Not Available</span> 
              {% endif %}
-            <a href="/books/{{book.id}}">More Info</a></li>
-            <a href="/books/{{book.id}}/delete">Delete</a>
+            <a class="info" href="/books/{{book.id}}">More Info</a>
+            <a class="delete" href="/books/{{book.id}}/delete" onclick="return confirm('Confirm Delete of book: {{book.title}}')">Delete</a></li>
             
         {% endfor %}
     </ul>

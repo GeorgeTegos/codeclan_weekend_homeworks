@@ -6,7 +6,18 @@ book_blueprint = Blueprint("book_list",__name__)
 
 @book_blueprint.route('/')
 def index():
-    return render_template('index.jinja',title = "Library")
+    return render_template('index.jinja',title = "Library",book_list=book_list)
+
+@book_blueprint.route('/', methods=['POST'])
+def search_by_title():
+    title = request.form['search']
+    for book in book_list:
+        if title in book.title:
+            result = book.id
+    book_position = find_book_by_id(result)
+    return render_template('books.jinja',title = 'test',book=book_position,
+                           book_checked_out=book_position.checked_out)
+    
 
 
 # Books

@@ -4,26 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> {{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/books">List of books</a></li>
-                <li><a href="/new_book">Add New Book</a></li>
-            </ul>
-        </nav>
+
+    <header class="header">
+            <nav class="header__container container">
+                <ul>
+                    <li class="header__logo">Logo</li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/books">List of books</a></li>
+                    <li><a href="/new_book">Add New Book</a></li>
+                </ul>
+            </nav>
     </header>
-    <main>
 
-        {% block content %}
-            
-        {% endblock content %}
+    <section class="filters">
+        <div class="filters__container container">
+            <div class="filters__search">
+                <form action="/" method="post">
+                <label for="search">Search by Title</label>
+                <input type="text" name="search" id="search">
+                <button class="search__button" type="submit">&#128269</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
+    <main class="content">
+        <div class="content__container container">
+
+            {% block content %}
+                
+            {% endblock content %}
+        </div>
     </main>
-    <footer>
 
+    <footer class="footer">
+        <div class="footer__container container">
+            <span>This is Footer Area</span>
+            <nav>
+                <span>Links</span>
+            </nav>
+        </div>
     </footer>
 </body>
 </html>
