@@ -37,10 +37,8 @@ const createRouter = function (collection) {
     .catch(err => {
         res.status(500);
         res.json({status: 500, error:err})
-    })
-  })
-
-
+    });
+  });
 
   router.delete('/:id', (req,res)=>{
     const itemToDelete = req.params.id
@@ -50,10 +48,20 @@ const createRouter = function (collection) {
     .catch(err => {
         res.status(500);
         res.json({status: 500, error:err})
-    })
+    });
+  });
 
-  })
+  router.put('/:id', (req,res)=>{
+    const itemToEdit = req.params.id
+    const newDataOfItem = req.body
 
+    collection.updateOne({_id: ObjectID(itemToEdit)} , {$set: newDataOfItem})
+    .then(doc => res.json(doc))
+    .catch(err =>{
+        res.status(500)
+        res.json({status: 500, error:err})
+    });
+  });
 
 
   return router;
