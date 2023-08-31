@@ -29,7 +29,16 @@ const createRouter = function (collection) {
       });
   });
 
-  
+  router.post('/',(req,res)=>{
+    const booking = req.body
+
+    collection.insertOne(booking)
+    .then(doc => res.json(doc))
+    .catch(err => {
+        res.status(500);
+        res.json({status: 500, error:err})
+    })
+  })
 
 
 
@@ -39,8 +48,8 @@ const createRouter = function (collection) {
     collection.deleteOne({_id: ObjectID(itemToDelete)})
     .then(doc => res.json(doc))
     .catch(err => {
-        console.error(err)
-        
+        res.status(500);
+        res.json({status: 500, error:err})
     })
 
   })
