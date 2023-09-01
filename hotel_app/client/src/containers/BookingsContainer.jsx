@@ -11,13 +11,16 @@ function BookingsContainer() {
     fetch("http://localhost:9000/bookings")
     .then((res)=>res.json())
     .then(data => setBookings(data))
+    
+    // Promise.all()
+    
   }
   ,[])
 
 
   return (
     <>
-        <BookingForm />
+        <BookingForm setBookings={setBookings}/>
         <BookingsList bookings={bookings}/>
     </>
   )

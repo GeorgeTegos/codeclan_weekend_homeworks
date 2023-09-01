@@ -25,7 +25,7 @@ function BookingsList({bookings}) {
     <>
     <BookingsListStyle>
         {bookings.map(booking => 
-            <BookingItemStyle>
+            <BookingItemStyle key={booking._id}>
                 <h3>Name: {booking.name}</h3>
                 <span>email: {booking.email}</span>
                 <span>Status: {booking.status== 'true' ? <>test</>:<>No test</>}</span>
