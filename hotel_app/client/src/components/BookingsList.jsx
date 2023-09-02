@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
+
 const BookingsListStyle = styled.ul`
     display: flex;
     flex-flow: row wrap;
@@ -19,7 +20,26 @@ const BookingItemStyle = styled.li`
     
 `;
 
-function BookingsList({bookings}) {
+function BookingsList({bookings, setBookings}) {
+
+  const handleDelete =(booking)=>{
+    fetch("http://localhost:9000/bookings/"+booking._id,{method: "DELETE"})
+    .then(()=>{
+      const newData = bookings.filter((bookingToRemove) => bookingToRemove._id !== booking._id)
+      setBookings(newData)
+    })
+  }
+
+  const handleStatus = (id)=>{
+    const booking  = bookings.find(booking => booking.id === id)
+
+    fetch("http://localhost:9000/bookings/"+id._id,{
+      method: "PUT",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({status: !id.status})
+    }).then((res)=>res.json())
+  }
+
 
   return (
     <>
@@ -29,8 +49,8 @@ function BookingsList({bookings}) {
                 <h3>Name: {booking.name}</h3>
                 <span>email: {booking.email}</span>
                 <span>Status: {booking.status== true ? <>Checked In</>:<>Checked Out</>}</span>
-                <button> Check out</button>
-                <button>Delete Booking</button>
+                <button onClick={()=>handleStatus(booking)}> Check out</button>
+                <button  onClick={()=>handleDelete(booking)}>Delete Booking</button>
             </BookingItemStyle>)}
 
     </BookingsListStyle>

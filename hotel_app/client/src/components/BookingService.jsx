@@ -1,6 +1,6 @@
+const URL = 'http://localhost:9000/bookings'
 
 
-export const [bookings,setBookings]= useState([])
 
   useEffect(()=>{
     fetch("http://localhost:9000/bookings")

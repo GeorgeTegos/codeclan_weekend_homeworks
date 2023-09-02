@@ -7,7 +7,7 @@ const Form = styled.form`
     width: max-content;
 `;
 
-function BookingForm({setBookings}) {
+function BookingForm({setBookings,}) {
     const [name,setName] = useState('')
     const [email,setEmail] = useState('')
     const [status,setStatus] = useState(false)
@@ -16,8 +16,7 @@ function BookingForm({setBookings}) {
         let isChecked = e.target.checked;
         setStatus(isChecked)
       }
-
-
+    
     const handleSubmit =(e) =>{
         e.preventDefault()
 

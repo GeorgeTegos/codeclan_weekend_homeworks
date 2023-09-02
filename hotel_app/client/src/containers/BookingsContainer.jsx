@@ -11,7 +11,7 @@ function BookingsContainer() {
     fetch("http://localhost:9000/bookings")
     .then((res)=>res.json())
     .then(data => setBookings(data))
-  },[])
+  },[bookings])
 
   const addBooking=(booking) => {
     setBookings([...bookings, booking])
@@ -20,8 +20,8 @@ function BookingsContainer() {
 
   return (
     <>
-        <BookingForm setBookings={addBooking}/>
-        <BookingsList bookings={bookings}/>
+        <BookingForm setBookings={addBooking} />
+        <BookingsList bookings={bookings} setBookings={setBookings}/>
     </>
   )
 }
