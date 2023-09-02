@@ -10,7 +10,13 @@ const Form = styled.form`
 function BookingForm({setBookings}) {
     const [name,setName] = useState('')
     const [email,setEmail] = useState('')
-    const [status,setStatus] = useState('')
+    const [status,setStatus] = useState(false)
+
+    const handleChange= (e) => {
+        let isChecked = e.target.checked;
+        setStatus(isChecked)
+      }
+
 
     const handleSubmit =(e) =>{
         e.preventDefault()
@@ -30,6 +36,10 @@ function BookingForm({setBookings}) {
         fetch("http://localhost:9000/bookings",config)
         .then(res => res.json())
         .then(data => setBookings(data.ops[0]))
+
+        setName("")
+        setEmail("")
+        setStatus(false)
     }
 
 
@@ -39,13 +49,13 @@ function BookingForm({setBookings}) {
         
         <Form onSubmit={handleSubmit}>
         <label htmlFor='name'>Guest Name:{" "}
-        <input type="text" onChange={(e) => setName(e.target.value)} value={name} name='name'/></label>
+        <input type="text" onChange={(e) => setName(e.target.value)} value={name} name='name' required/></label>
 
         <label htmlFor="email">Guest Email:{" "}
-        <input type='text' onChange={(e)=> setEmail(e.target.value)} value={email} name='email'/></label>
+        <input type='text' onChange={(e)=> setEmail(e.target.value)} value={email} name='email' required/></label>
 
         <label htmlFor="check_in">Checked In
-        <input type="checkbox" name="check_in" id="check_in" onChange={()=> setStatus(!status)}/></label>
+        <input type="checkbox" name="check_in" id="check_in" onChange={(e)=> handleChange(e)} checked={status}/></label>
 
         <input type="submit" value="Save" />
         </Form>

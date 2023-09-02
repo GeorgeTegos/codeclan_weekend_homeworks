@@ -28,7 +28,7 @@ function BookingsList({bookings}) {
             <BookingItemStyle key={booking._id}>
                 <h3>Name: {booking.name}</h3>
                 <span>email: {booking.email}</span>
-                <span>Status: {booking.status== 'true' ? <>test</>:<>No test</>}</span>
+                <span>Status: {booking.status== true ? <>Checked In</>:<>Checked Out</>}</span>
                 <button> Check out</button>
                 <button>Delete Booking</button>
             </BookingItemStyle>)}
