@@ -49,8 +49,8 @@ function BookingsList({bookings, setBookings}) {
                 <h3>Name: {booking.name}</h3>
                 <span>email: {booking.email}</span>
                 <span>Status: {booking.status== true ? <>Checked In</>:<>Checked Out</>}</span>
-                <button onClick={()=>handleStatus(booking)}> Check out</button>
-                <button  onClick={()=>handleDelete(booking)}>Delete Booking</button>
+                <button onClick={()=>handleStatus(booking)}>{booking.status!= true ? <>Check In</>:<>Check Out</>}</button>
+                <button  onClick={()=>handleDelete(booking)}>&#x274C; Delete Booking</button>
             </BookingItemStyle>)}
 
     </BookingsListStyle>
