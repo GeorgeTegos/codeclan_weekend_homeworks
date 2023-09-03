@@ -20,6 +20,10 @@ const BookingItemStyle = styled.li`
     
 `;
 
+const NameStyle = styled.h3`
+  color: green;
+`;
+
 function BookingsList({bookings, setBookings}) {
 
   const handleDelete =(booking)=>{
@@ -46,7 +50,7 @@ function BookingsList({bookings, setBookings}) {
     <BookingsListStyle>
         {bookings.map(booking => 
             <BookingItemStyle key={booking._id}>
-                <h3>Name: {booking.name}</h3>
+                <NameStyle>Name: {booking.name}</NameStyle>
                 <span>email: {booking.email}</span>
                 <span>Status: {booking.status== true ? <>Checked In</>:<>Checked Out</>}</span>
                 <button onClick={()=>handleStatus(booking)}>{booking.status!= true ? <>Check In</>:<>Check Out</>}</button>

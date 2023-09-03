@@ -7,7 +7,7 @@ const Form = styled.form`
     width: max-content;
 `;
 
-function BookingForm({setBookings,}) {
+function BookingForm({addBooking,}) {
     const [name,setName] = useState('')
     const [email,setEmail] = useState('')
     const [status,setStatus] = useState(false)
@@ -34,7 +34,7 @@ function BookingForm({setBookings,}) {
 
         fetch("http://localhost:9000/bookings",config)
         .then(res => res.json())
-        .then(data => setBookings(data.ops[0]))
+        .then(data => addBooking(data.ops[0]))
 
         setName("")
         setEmail("")

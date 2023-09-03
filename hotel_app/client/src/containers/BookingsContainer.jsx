@@ -20,7 +20,7 @@ function BookingsContainer() {
 
   return (
     <>
-        <BookingForm setBookings={addBooking} />
+        <BookingForm addBooking={addBooking} />
         <BookingsList bookings={bookings} setBookings={setBookings}/>
     </>
   )
