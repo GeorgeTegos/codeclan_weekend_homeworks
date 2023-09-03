@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from "styled-components"
+import dayjs from "dayjs"
 
 const Form = styled.form`
     display: flex;
@@ -28,7 +29,8 @@ function BookingForm({addBooking,}) {
         const booking ={
             name,
             email,
-            status
+            status,
+            date: dayjs()
         }
 
         const config ={

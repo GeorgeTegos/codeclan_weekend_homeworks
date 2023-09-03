@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import dayjs from "dayjs"
+import relativeTime from "dayjs/plugin/relativeTime"
+dayjs.extend(relativeTime)
 
 const BookingsListStyle = styled.ul`
     display: flex;
@@ -53,7 +55,10 @@ function BookingsList({bookings, setBookings, reRenderToggle}) {
             <BookingItemStyle key={booking._id}>
                 <NameStyle>Name: {booking.name}</NameStyle>
                 <span>email: {booking.email}</span>
-                <span>Status: {booking.status== true ? <>Checked In</>:<>Checked Out</>}</span>
+                <span>Created: {dayjs().to(booking.date)}</span>
+                <span>Status: {booking.status== true 
+                ? <>Checked In <br /> </>
+                :<>Checked Out <br /> </>}</span>
                 <button onClick={()=>handleStatus(booking)}>{booking.status!= true ? <>Check In</>:<>Check Out</>}</button>
                 <button  onClick={()=>handleDelete(booking)}>&#x274C; Delete Booking</button>
             </BookingItemStyle>)}
