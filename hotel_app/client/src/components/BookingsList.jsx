@@ -24,7 +24,7 @@ const NameStyle = styled.h3`
   color: green;
 `;
 
-function BookingsList({bookings, setBookings}) {
+function BookingsList({bookings, setBookings, reRenderToggle}) {
 
   const handleDelete =(booking)=>{
     fetch("http://localhost:9000/bookings/"+booking._id,{method: "DELETE"})
@@ -42,6 +42,7 @@ function BookingsList({bookings, setBookings}) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({status: !id.status})
     }).then((res)=>res.json())
+    .then(()=> reRenderToggle())
   }
 
 

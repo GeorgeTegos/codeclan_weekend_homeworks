@@ -6,12 +6,17 @@ import BookingForm from '../components/BookingForm'
 function BookingsContainer() {
 
   const [bookings,setBookings]= useState([])
+  const [reRender,setRerender] = useState(false)
+
+  const reRenderToggle = () =>{
+    setRerender(!reRender)
+  }
 
   useEffect(()=>{
     fetch("http://localhost:9000/bookings")
     .then((res)=>res.json())
     .then(data => setBookings(data))
-  },[]) // [bookings]
+  },[reRender]) // [bookings]
 
   const addBooking=(booking) => {
     setBookings([...bookings, booking])
@@ -21,7 +26,7 @@ function BookingsContainer() {
   return (
     <>
         <BookingForm addBooking={addBooking} />
-        <BookingsList bookings={bookings} setBookings={setBookings}/>
+        <BookingsList bookings={bookings} setBookings={setBookings} reRenderToggle={reRenderToggle}/>
     </>
   )
 }
