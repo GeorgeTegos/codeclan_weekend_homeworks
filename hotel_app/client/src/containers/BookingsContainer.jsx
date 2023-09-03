@@ -11,7 +11,7 @@ function BookingsContainer() {
     fetch("http://localhost:9000/bookings")
     .then((res)=>res.json())
     .then(data => setBookings(data))
-  },[bookings])
+  },[]) // [bookings]
 
   const addBooking=(booking) => {
     setBookings([...bookings, booking])
