@@ -12,10 +12,10 @@ function BookingForm({setBookings,}) {
     const [email,setEmail] = useState('')
     const [status,setStatus] = useState(false)
 
-    const handleChange= (e) => {
-        let isChecked = e.target.checked;
-        setStatus(isChecked)
-      }
+    // const handleChange= (e) => {
+    //     let isChecked = e.target.checked;
+    //     setStatus(isChecked)
+    //   }
     
     const handleSubmit =(e) =>{
         e.preventDefault()
