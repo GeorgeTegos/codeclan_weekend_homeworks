@@ -7,6 +7,11 @@ const Form = styled.form`
     width: max-content;
 `;
 
+const Button = styled.button`
+	
+`;
+
+
 function BookingForm({addBooking,}) {
     const [name,setName] = useState('')
     const [email,setEmail] = useState('')
@@ -56,7 +61,7 @@ function BookingForm({addBooking,}) {
         <label htmlFor="check_in">Checked In
         <input type="checkbox" name="check_in" id="check_in" onChange={(e)=> handleChange(e)} checked={status}/></label>
 
-        <input type="submit" value="Save" />
+        <input type="submit" value="Save" className='save-button' />
         </Form>
     </>
   )

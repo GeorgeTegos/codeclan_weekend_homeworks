@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import BookingsContainer from './containers/BookingsContainer'
-// import './App.css'
+import './App.css'
 
 function App() {
 
