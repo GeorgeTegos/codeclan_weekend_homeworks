@@ -18,12 +18,21 @@ const BookingItemStyle = styled.li`
     display: flex;
     min-width: 20%;
     gap:1rem;
-    flex-direction: column;
-    
+    flex-direction: column;  
 `;
 
 const NameStyle = styled.h3`
   color: green;
+`;
+
+const Span = styled.span`
+  background-color: ${({bg}) => bg};
+  color: ${({color})=> color};
+  padding: 0.1rem 0.3rem;
+  border-radius: 40%;
+  :hover{
+    background-color: black;
+  }
 `;
 
 function BookingsList({bookings, setBookings, reRenderToggle}) {
@@ -42,7 +51,7 @@ function BookingsList({bookings, setBookings, reRenderToggle}) {
     fetch("http://localhost:9000/bookings/"+id._id,{
       method: "PUT",
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({status: !id.status})
+      body: JSON.stringify({status: !id.status, date: dayjs()})
     }).then((res)=>res.json())
     .then(()=> reRenderToggle())
   }
@@ -53,16 +62,21 @@ function BookingsList({bookings, setBookings, reRenderToggle}) {
     <BookingsListStyle>
         {bookings.map(booking => 
             <BookingItemStyle key={booking._id}>
-                <NameStyle>Name: {booking.name}</NameStyle>
+                <NameStyle>{booking.name}</NameStyle>
                 <span>email: {booking.email}</span>
-                <span>Created: {dayjs().to(booking.date)}</span>
                 <span>Status: {booking.status== true 
-                ? <>Checked In <br /> </>
-                :<>Checked Out <br /> </>}</span>
+                ? <> 
+                <Span bg="green" color="white">Checked In</Span> 
+                    <br />
+                      {dayjs().to(booking.date)}<br /> </>
+                :<> 
+                <Span bg="yellow">Checked Out </Span> 
+                    <br />
+                      {dayjs().to(booking.date)}<br /> </>}
+                  </span> {/* Status Span */}
                 <button onClick={()=>handleStatus(booking)}>{booking.status!= true ? <>Check In</>:<>Check Out</>}</button>
                 <button  onClick={()=>handleDelete(booking)}>&#x274C; Delete Booking</button>
             </BookingItemStyle>)}
-
     </BookingsListStyle>
     </>
   )
