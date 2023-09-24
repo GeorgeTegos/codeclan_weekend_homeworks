@@ -1,4 +1,5 @@
 import People.Customers.Passenger;
+import People.FlightManager;
 import People.Staff.CabinCrew;
 import People.Staff.Pilot;
 import People.Staff.Rank;
@@ -73,5 +74,15 @@ public class FlightTest {
         int expect = 244; //244
 
         assertEquals(expect, this.flight.availableSeats());
+    }
+
+
+    @Test
+    public void canCalculateBaggagePerPassenger() {
+
+        int expect = 496;
+        double result = FlightManager.baggageWeightPerPerson(this.plane.getType());
+
+        assertEquals(expect,result,0.0);
     }
 }
