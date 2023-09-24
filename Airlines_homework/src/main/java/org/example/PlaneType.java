@@ -7,11 +7,9 @@ public enum PlaneType {
 
     private final int capacity;
     private final double totalWeight;
-    private final double bagSpace;
     PlaneType(int capacity,double totalWeight){
         this.capacity = capacity;
         this.totalWeight = totalWeight;
-        this.bagSpace = totalWeight/2;
 
     }
 
@@ -24,6 +22,6 @@ public enum PlaneType {
     }
 
     public double getBagSpace() {
-        return bagSpace;
+        return this.totalWeight / 2;
     }
 }

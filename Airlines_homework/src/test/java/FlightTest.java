@@ -85,4 +85,21 @@ public class FlightTest {
 
         assertEquals(expect,result,0.0);
     }
+
+    @Test
+    public void testWeightBookedByPassengers(){
+        double expect =40;
+         double result = FlightManager.weightBookedByPassengers(this.flight.getPlane(),this.flight.getPassengers());
+        assertEquals(expect,result,0.0);
+    }
+
+    @Test
+    public void testRemainingWeightLeft(){
+
+        double expect = 123960.0;
+        double result = FlightManager.remainingWeightLeft(this.flight.getPlane(),this.flight.getPassengers());
+
+        assertEquals(expect,result,0.0);
+    }
+
 }

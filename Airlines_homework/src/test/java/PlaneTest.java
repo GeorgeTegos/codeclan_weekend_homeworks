@@ -20,7 +20,7 @@ public class PlaneTest {
 
     @Test
     public void hasCorrectTotalWeight(){
-        double expect = plane.getPlateTotalWeight();
+        double expect = plane.getPlaneTotalWeight();
         assertEquals(expect,PlaneType.Boeing747.getTotalWeight(), 0.0);
     }
 }

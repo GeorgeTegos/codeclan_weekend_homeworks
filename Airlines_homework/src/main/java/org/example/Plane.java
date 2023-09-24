@@ -15,7 +15,7 @@ public class Plane {
         return type.getCapacity();
     }
 
-    public double getPlateTotalWeight(){
+    public double getPlaneTotalWeight(){
         return this.type.getTotalWeight();
     }
 }

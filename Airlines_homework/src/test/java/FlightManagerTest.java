@@ -13,6 +13,5 @@ public class FlightManagerTest {
         flightManager = new FlightManager("Jimmy");
         plane = new Plane(PlaneType.Saab2000);
 
-
     }
 }
