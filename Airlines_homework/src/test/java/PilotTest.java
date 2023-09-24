@@ -18,4 +18,10 @@ public class PilotTest {
 
         assertEquals(expect,pilot.getLicenceNumber());
     }
+
+    @Test
+    public void canFlyThePlane(){
+        String expect = "I am your Pilot, i can fly the plane";
+        assertEquals(expect,pilot.flyThePlane());
+    }
 }

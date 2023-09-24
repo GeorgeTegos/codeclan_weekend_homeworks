@@ -11,7 +11,7 @@ public class Plane {
         return type;
     }
 
-    public double getPlaneCapacity(){
+    public int getPlaneCapacity(){
         return type.getCapacity();
     }
 

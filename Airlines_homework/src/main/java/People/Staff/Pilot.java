@@ -11,5 +11,9 @@ public class Pilot extends FlightCrew{
         return licenceNumber;
     }
 
+    public String flyThePlane(){
+        return "I am your Pilot, i can fly the plane";
+    }
+
 
 }

@@ -5,19 +5,25 @@ public enum PlaneType {
     AirbusA330(200,233_000),
     Saab2000(50,23_000);
 
-    private final double capacity;
+    private final int capacity;
     private final double totalWeight;
-    PlaneType(double capacity,double totalWeight){
+    private final double bagSpace;
+    PlaneType(int capacity,double totalWeight){
         this.capacity = capacity;
         this.totalWeight = totalWeight;
+        this.bagSpace = totalWeight/2;
 
     }
 
-    public double getCapacity() {
+    public int getCapacity() {
         return capacity;
     }
 
     public double getTotalWeight() {
         return totalWeight;
+    }
+
+    public double getBagSpace() {
+        return bagSpace;
     }
 }
