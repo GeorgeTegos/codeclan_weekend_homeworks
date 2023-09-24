@@ -52,7 +52,7 @@ function BookingsList({bookings, setBookings, reRenderToggle}) {
       method: "PUT",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({status: !id.status, date: dayjs()})
-    }).then((res)=>res.json())
+    })
     .then(()=> reRenderToggle())
   }
 
@@ -74,7 +74,11 @@ function BookingsList({bookings, setBookings, reRenderToggle}) {
                     <br />
                       {dayjs().to(booking.date)}<br /> </>}
                   </span> {/* Status Span */}
-                <button onClick={()=>handleStatus(booking)}>{booking.status!= true ? <>Check In</>:<>Check Out</>}</button>
+                <button onClick={()=>handleStatus(booking)}>
+                  {booking.status!= true 
+                    ? <>Check In</>
+                    :<>Check Out</>}
+                </button>
                 <button  onClick={()=>handleDelete(booking)}>&#x274C; Delete Booking</button>
             </BookingItemStyle>)}
     </BookingsListStyle>
