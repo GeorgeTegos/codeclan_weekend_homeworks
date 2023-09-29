@@ -31,6 +31,20 @@ public class TeaControllers {
         teaRepository.deleteById(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:5173")
+    @PutMapping(value = "/api/teas/{id}")
+    public Tea ediTea(@PathVariable Long id,@RequestBody Tea newTea){
+        return teaRepository.findById(id).map(tea ->{
+            tea.setName(newTea.getName());
+            tea.setBrand(newTea.getBrand());
+            return teaRepository.save(tea);
+        }).orElseGet(() ->{
+            newTea.setId(id);
+            return teaRepository.save(newTea);
+        }
+        );
+    }
+
 
 
 }

@@ -30,6 +30,21 @@ public class BiscuitControllers {
     public void deleteTea(@PathVariable Long id){
         biscuitRepository.deleteById(id);
     }
+
+    @CrossOrigin(origins = "http://localhost:5173")
+    @PutMapping(value = "/api/biscuits/{id}")
+    public Biscuit editBiscuit(@PathVariable Long id, @RequestBody Biscuit newBiscuit) {
+        return biscuitRepository.findById(id).map(biscuit -> {
+            biscuit.setName(newBiscuit.getName());
+            biscuit.setBrand(newBiscuit.getBrand());
+            return biscuitRepository.save(biscuit);
+        }).orElseGet(() -> {
+                    newBiscuit.setId(id);
+                    return newBiscuit;
+                }
+        );
+    }
+
 }
 
 

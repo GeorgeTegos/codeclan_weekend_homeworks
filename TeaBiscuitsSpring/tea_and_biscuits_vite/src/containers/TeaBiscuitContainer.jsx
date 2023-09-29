@@ -50,7 +50,7 @@ const TeasContainer = () => {
   const handleBiscuitDelete = (biscuit) => {
     fetch(BASE_URL + `/api/biscuits/${biscuit.id}`, {
       method: "DELETE",
-    }).then(() => fetchTeas());
+    }).then(() => fetchBiscuits());
   };
 
   return (
@@ -62,10 +62,12 @@ const TeasContainer = () => {
       <TeaList
         teas={teas}
         handleTeaDelete={handleTeaDelete}
+        fetchTeas={fetchTeas}
       />
       <BiscuitList
         biscuits={biscuits}
         handleBiscuitDelete={handleBiscuitDelete}
+        fetchBiscuits={fetchBiscuits}
       />
     </>
   );
