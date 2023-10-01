@@ -10,7 +10,10 @@ const BiscuitList = ({ biscuits, handleBiscuitDelete, fetchBiscuits }) => {
       <ul>
         {biscuits.map((biscuit) => {
           return (
-            <li key={biscuit.id}>
+            <li
+              key={biscuit.id}
+              style={{ margin: "10px", textDecoration: "underline " }}
+            >
               {biscuit.name} by {biscuit.brand}
               <button onClick={() => handleBiscuitDelete(biscuit)}>
                 Delete
@@ -20,6 +23,7 @@ const BiscuitList = ({ biscuits, handleBiscuitDelete, fetchBiscuits }) => {
                 <EditBiscuitForm
                   fetchBiscuits={fetchBiscuits}
                   biscuit={biscuit}
+                  setEdit={setEdit}
                 />
               )}
             </li>

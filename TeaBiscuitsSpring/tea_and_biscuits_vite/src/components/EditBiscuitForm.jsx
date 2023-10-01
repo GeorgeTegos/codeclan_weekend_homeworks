@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-function EditBiscuitForm({ biscuit, fetchBiscuits }) {
+function EditBiscuitForm({ biscuit, fetchBiscuits, setEdit }) {
   const [name, setName] = useState(biscuit.name);
   const [brand, setBrand] = useState(biscuit.brand);
   const BASE_URL = "http://localhost:8080";
@@ -28,6 +28,7 @@ function EditBiscuitForm({ biscuit, fetchBiscuits }) {
 
     setBrand("");
     setName("");
+    setEdit(false);
 
     fetch(`${BASE_URL}/api/biscuits/${biscuit.id}`, config)
       .then((res) => res.json())

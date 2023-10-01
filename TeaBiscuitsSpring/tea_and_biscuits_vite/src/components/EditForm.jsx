@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function EditForm({ fetchTeas, tea }) {
+function EditForm({ fetchTeas, tea, setEdit }) {
   const [name, setName] = useState(tea.name);
   const [brand, setBrand] = useState(tea.brand);
   const BASE_URL = "http://localhost:8080";
@@ -25,12 +25,13 @@ function EditForm({ fetchTeas, tea }) {
       }),
     };
 
-    setBrand("");
-    setName("");
-
     fetch(`${BASE_URL}/api/teas/${tea.id}`, config)
       .then((res) => res.json())
       .then((data) => fetchTeas());
+
+    setBrand("");
+    setName("");
+    setEdit(false);
   };
 
   return (

@@ -9,7 +9,10 @@ const TeaList = ({ teas, handleTeaDelete, fetchTeas }) => {
       <ul>
         {teas.map((tea) => {
           return (
-            <li key={tea.id}>
+            <li
+              key={tea.id}
+              style={{ margin: "10px", textDecoration: "underline " }}
+            >
               {tea.name} by {tea.brand}
               <button onClick={() => handleTeaDelete(tea)}>Delete</button>
               <button onClick={() => setEdit(!edit)}>Edit</button>
@@ -17,6 +20,7 @@ const TeaList = ({ teas, handleTeaDelete, fetchTeas }) => {
                 <EditForm
                   fetchTeas={fetchTeas}
                   tea={tea}
+                  setEdit={setEdit}
                 />
               )}
             </li>

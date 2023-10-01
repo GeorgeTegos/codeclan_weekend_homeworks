@@ -13,25 +13,25 @@ public class TeaControllers {
     @Autowired
     TeaRepository teaRepository;
 
-    @CrossOrigin(origins = "http://localhost:5173")
+//    @CrossOrigin(origins = "http://localhost:5173")
     @GetMapping(value = "/api/teas")
     public List<Tea> getTeas(){
         return teaRepository.findAll();
     }
 
-    @CrossOrigin(origins = "http://localhost:5173")
+//    @CrossOrigin(origins = "http://localhost:5173")
     @PostMapping(value = "/api/teas")
     public Tea addTea(@RequestBody Tea tea){
         return teaRepository.save(tea);
     }
 
-    @CrossOrigin(origins = "http://localhost:5173")
+//    @CrossOrigin(origins = "http://localhost:5173")
     @DeleteMapping(value = "/api/teas/{id}")
     public void deleteTea(@PathVariable Long id){
         teaRepository.deleteById(id);
     }
 
-    @CrossOrigin(origins = "http://localhost:5173")
+//    @CrossOrigin(origins = "http://localhost:5173")
     @PutMapping(value = "/api/teas/{id}")
     public Tea ediTea(@PathVariable Long id,@RequestBody Tea newTea){
         return teaRepository.findById(id).map(tea ->{
